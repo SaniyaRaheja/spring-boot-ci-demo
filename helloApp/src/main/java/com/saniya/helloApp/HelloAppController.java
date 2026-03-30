@@ -8,7 +8,7 @@ public class HelloAppController {
 
     @GetMapping("/")
     public String getHome(){
-        return "Hello from ci/cd pipeline ";
+        return "Hello from ci/cd pipeline.... ";
     }
 
 }
