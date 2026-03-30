@@ -22,6 +22,7 @@ jobs:
 
     - name: Building jar
       run: mvn clean package -DskipTests
+      working-directory: ./helloApp
 
     - name: Login to DockerHub
       uses: docker/login-action@v4
