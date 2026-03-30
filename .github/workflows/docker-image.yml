@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      uses: actions/checkout@v4
       
     - name: setup jdk
       uses: actions/setup-java@v5
