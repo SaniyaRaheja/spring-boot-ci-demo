@@ -47,6 +47,8 @@ jobs:
         script: |
           docker stop spring-demo || true
           docker rm spring-demo || true
-          docker rmi  ${{secrets.DOCKERHUB_USERNAME}}/spring-boot-ci-demo:latest|| true
-          docker pull ${{secrets.DOCKERHUB_USERNAME}}/spring-boot-ci-demo:latest
-          docker run -d --name spring-demo -p 8080:8080 ${{secrets.DOCKERHUB_USERNAME}}/spring-boot-ci-demo:latest
+          docker stop $(docker ps -q --filter "publish=8080") || true
+          docker rm $(docker ps -aq --filter "publish=8080") || true
+          docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-ci-demo:latest || true
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-ci-demo:latest
+          docker run -d --name spring-demo -p 8080:8080 ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-ci-demo:latest
